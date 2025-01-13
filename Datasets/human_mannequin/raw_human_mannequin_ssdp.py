@@ -69,7 +69,7 @@ class RawHumanMannequinSSDP(RawHumanMannequin):
             roi_vm_img = roi_vm_img.cuda()
             roi_mask_img = roi_mask_img.cuda()
             roi_ssdp_img = roi_ssdp_img.cuda()
-        #roi_garment_img, roi_vm_img, roi_ssdp_img = self._normalize(roi_garment_img), self._normalize(roi_vm_img), self._normalize(roi_ssdp_img)
+        roi_garment_img, roi_vm_img, roi_ssdp_img = self._normalize(roi_garment_img), self._normalize(roi_vm_img), self._normalize(roi_ssdp_img)
         input_semantics = torch.cat((roi_vm_img, roi_ssdp_img), dim=0)
         real_image = torch.cat((roi_garment_img, roi_mask_img), dim=0)
         return input_semantics, real_image
