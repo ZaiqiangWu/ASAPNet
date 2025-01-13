@@ -6,6 +6,7 @@ Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses
 import importlib
 import torch.utils.data
 from data.base_dataset import BaseDataset
+from Datasets.human_mannequin.raw_human_mannequin_ssdp import RawHumanMannequinSSDP
 
 
 def find_dataset_using_name(dataset_name):
@@ -39,11 +40,16 @@ def get_option_setter(dataset_name):
 
 
 def create_dataloader(opt):
-    dataset = find_dataset_using_name(opt.dataset_mode)
-    instance = dataset()
-    instance.initialize(opt)
-    print("dataset [%s] of size %d was created" %
-          (type(instance).__name__, len(instance)))
+    if opt.dataset_mode == 'garment':
+        instance = RawHumanMannequinSSDP(opt.dataroot)
+        print("dataset [%s] of size %d was created" %
+              (type(instance).__name__, len(instance)))
+    else:
+        dataset = find_dataset_using_name(opt.dataset_mode)
+        instance = dataset()
+        instance.initialize(opt)
+        print("dataset [%s] of size %d was created" %
+              (type(instance).__name__, len(instance)))
     dataloader = torch.utils.data.DataLoader(
         instance,
         batch_size=opt.batchSize,
