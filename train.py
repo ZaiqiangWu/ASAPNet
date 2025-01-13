@@ -61,9 +61,19 @@ for epoch in iter_counter.training_epochs():
             visualizer.plot_current_errors(losses, iter_counter.total_steps_so_far)
 
         if iter_counter.needs_displaying():
-            visuals = OrderedDict([('input_label', data_i['label']),
-                                   ('synthesized_image', trainer.get_latest_generated()),
-                                   ('real_image', data_i['image'])])
+            input_data = data_i[0]
+            vm_img = input_data[:,[0,1,2],:,:]
+            ssdp_img = input_data[:,[3,4,5],:,:]
+            #vm_img
+            ground_truth = data_i[1][:,[0,1,2],:,:]
+            ground_truth_mask = data_i[1][:, [0, 1, 2], :, :]
+            pred_img = trainer.get_latest_generated()[:,[0,1,2],:,:]
+            pred_mask = trainer.get_latest_generated()[:,[3],:,:]
+
+
+            visuals = OrderedDict([('input_vm', vm_img),
+                                   ('synthesized_image', pred_img),
+                                   ('real_image',ground_truth)])
             visualizer.display_current_results(visuals, epoch, iter_counter.total_steps_so_far)
 
         if iter_counter.needs_saving():
