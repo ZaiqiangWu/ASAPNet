@@ -26,7 +26,7 @@ class ASAPNetsGenerator(BaseNetwork):
         if lr_stream is None or hr_stream is None:
             lr_stream = dict()
             hr_stream = dict()
-        self.num_inputs = opt.label_nc + (1 if opt.contain_dontcare_label else 0) + (0 if (opt.no_instance_edge & opt.no_instance_dist) else 1)
+        self.num_inputs = opt.label_nc# + (1 if opt.contain_dontcare_label else 0) + (0 if (opt.no_instance_edge & opt.no_instance_dist) else 1)
         self.lr_instance = opt.lr_instance
         self.learned_ds_factor = opt.learned_ds_factor #(S2 in sec. 3.2)
         self.gpu_ids = opt.gpu_ids
