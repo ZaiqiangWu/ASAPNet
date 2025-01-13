@@ -1,6 +1,5 @@
 checkpoints/
 results/
-datasets/
 .idea/
 venv/
 *.tar.gz

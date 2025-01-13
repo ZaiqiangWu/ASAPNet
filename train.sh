@@ -1,0 +1,1 @@
+python train.py --name [experiment_name] --dataset_mode custom --label_dir [path_to_labels] --image_dir [path_to_images] --no_one_hot --no_flip --label_nc [num_labels]
