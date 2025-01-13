@@ -40,6 +40,7 @@ def get_option_setter(dataset_name):
 
 
 def create_dataloader(opt):
+    print(opt.dataset_mode)
     if opt.dataset_mode == 'garment':
         instance = RawHumanMannequinSSDP(opt.dataroot)
         print("dataset [%s] of size %d was created" %
