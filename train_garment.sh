@@ -1,1 +1,1 @@
-python train.py --name garment --batchSize 4 --dataset_mode garment --dataroot ./data/HumanMannequinSSDP/jin_25_vmsssk  --no_one_hot --no_flip --label_nc 6 --output_nc 4 --niter 300 --niter_decay 300
+python train.py --name garment --batchSize 16 --dataset_mode garment --dataroot ./data/HumanMannequinSSDP/jin_25_vmsssk  --no_one_hot --no_flip --label_nc 6 --output_nc 4 --niter 300 --niter_decay 300
